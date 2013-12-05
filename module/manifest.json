@@ -1,8 +1,8 @@
 {
+    "changes": "* Update Android tabbar styling to match iOS 7.", 
     "description": "Add a navigation button bar to the bottom of your app.\n\nThe tabbar module displays a fixed row of native buttons at the bottom of your app. You can add and remove buttons, and configure their behaviour and appearance, all from JavaScript.", 
-    "name": "tabbar", 
-    "platform_version": "v2.0.0", 
     "min_platform_version": "v2.0.1", 
-    "version": "2.3",
-    "changes": "* Update Android tabbar styling to match iOS 7."
+    "name": "tabbar", 
+    "platform_version": "v2.1.0", 
+    "version": "2.3"
 }
