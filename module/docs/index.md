@@ -36,9 +36,9 @@ To get an idea of how these footers can look, see our blog post, [How to build h
 !param: error `function(content)` called with details of any error which may occur
 
 !method: forge.tabbar.addButton(params, success, error)
-!param: params `object` button options, must contain an ``icon``, ``text`` and optionally ``index``
+!param: params `object` button options, must contain an ``icon``, ``text`` and ``index`` are optional.
 !param: success `function(button)` called with the button object
-!description: Add a button with an ``icon`` and ``text`` to the tabbar. 
+!description: Add a button with an ``icon`` and optional ``text`` to the tabbar. 
 !platforms: iOS, Android
 !param: error `function(content)` called with details of any error which may occur
 
@@ -50,7 +50,7 @@ The first parameter is an object of options for the button, which can include:
    returned by something like [forge.file.saveURL](/modules/file/current/docs/index.html#forgefilesaveurlurl-success-error), or a
    string path relative to the ``src`` directory, e.g.
    ``"img/button.png"``.
--  ``text`` (required): This sets the text which will appear below the
+-  ``text`` (optional): This sets the text which will appear below the
    icon on the tab.
 -  ``index`` (recommended): This sets the order of the button to be
    added, not setting this will result in the order of the tabs not

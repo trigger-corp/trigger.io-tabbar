@@ -52,8 +52,8 @@ static bool hidden = NO;
 }
 
 + (void)addButton:(ForgeTask*)task {
-	if (![task.params objectForKey:@"text"] || ![task.params objectForKey:@"icon"]) {
-		[task error:@"Missing text or icon" type:@"BAD_INPUT" subtype:nil];
+	if (![task.params objectForKey:@"icon"]) {
+		[task error:@"Missing text" type:@"BAD_INPUT" subtype:nil];
 		return;
 	}
 	
@@ -69,8 +69,17 @@ static bool hidden = NO;
 		
 		icon = [icon imageWithWidth:30 andHeight:30 andRetina:YES];
 		
-		UITabBarItem *item = [[UITabBarItem alloc] initWithTitle:[task.params objectForKey:@"text"] image:icon tag:0];
+		UITabBarItem *item = [[UITabBarItem  alloc ] init ];
+        item.image = icon;
+		item.tag = 0;
 		
+		if ([task.params objectForKey:@"text"] != nil)) {
+            item.title = [task.params objectForKey:@"text"];
+        } else {
+            // We don't have a title - center the image vertically.
+            item.imageInsets = UIEdgeInsetsMake(5, 0, -5, 0);
+        }
+
 		objc_setAssociatedObject(item, &taskKey, task, OBJC_ASSOCIATION_RETAIN);
 		
 		int index = 0;
