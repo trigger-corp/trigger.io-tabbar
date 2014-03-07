@@ -36,7 +36,7 @@ To get an idea of how these footers can look, see our blog post, [How to build h
 !param: error `function(content)` called with details of any error which may occur
 
 !method: forge.tabbar.addButton(params, success, error)
-!param: params `object` button options, must contain an ``icon``, ``text`` and ``index`` are optional.
+!param: params `object` button options, must contain at least ``icon``. The ``text`` and ``index`` parameters are optional.
 !param: success `function(button)` called with the button object
 !description: Add a button with an ``icon`` and optional ``text`` to the tabbar. 
 !platforms: iOS, Android
