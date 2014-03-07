@@ -73,7 +73,7 @@ static bool hidden = NO;
         item.image = icon;
 		item.tag = 0;
 		
-		if ([task.params objectForKey:@"text"] != nil)) {
+		if ([task.params objectForKey:@"text"] != nil) {
             item.title = [task.params objectForKey:@"text"];
         } else {
             // We don't have a title - center the image vertically.
