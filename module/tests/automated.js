@@ -230,10 +230,10 @@ if (forge.is.mobile()) {
 		forge.tabbar.addButton({
 			icon: "fixtures/tabbar/1.png"
 		}, function (button) {
-			ok(false);
+			ok(true);
 			start();
 		}, function () {
-			ok(true);
+			ok(false);
 			start();
 		});
 	});

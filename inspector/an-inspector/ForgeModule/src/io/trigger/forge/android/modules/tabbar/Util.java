@@ -65,13 +65,15 @@ public class Util {
 		}
 		image.setTag("image");
 		tab.addView(image, new ViewGroup.LayoutParams(Math.round(metrics.density * 32), Math.round(metrics.density * 32)));
-		TextView text = new TextView(context);
-		text.setText(params.get("text").getAsString());
-		text.setTextColor(0xFF929292);
-		text.setTextSize(TypedValue.COMPLEX_UNIT_PX, metrics.density * 12);
-		text.setGravity(Gravity.CENTER);
-		text.setTag("text");
-		tab.addView(text, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+		if (params.has("text")) {
+			TextView text = new TextView(context);
+			text.setText(params.get("text").getAsString());
+			text.setTextColor(0xFF929292);
+			text.setTextSize(TypedValue.COMPLEX_UNIT_PX, metrics.density * 12);
+			text.setGravity(Gravity.CENTER);
+			text.setTag("text");
+			tab.addView(text, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));	
+		}
 
 		int index;
 		if (params.has("index")) {
@@ -101,14 +103,20 @@ public class Util {
 
 			String iconPath = params.get("icon").getAsString();
 			((ImageView) tab.findViewWithTag("image")).setImageDrawable(BitmapUtil.scaledDrawableFromLocalFileWithTint(context, iconPath, 0, 32, 0xFF929292));
-			((TextView) tab.findViewWithTag("text")).setTextColor(0xFF929292);
+			TextView textView = (TextView) tab.findViewWithTag("text");
+			if (textView != null) {
+				textView.setTextColor(0xFF929292);	
+			}
 		}
 		if (callid != null && tabObjects.get(callid) != null) {
 			JsonObject params = (JsonObject) tabObjects.get(callid).getTag();
 
 			String iconPath = params.get("icon").getAsString();
 			((ImageView) tabObjects.get(callid).findViewWithTag("image")).setImageDrawable(BitmapUtil.scaledDrawableFromLocalFileWithTint(context, iconPath, 0, 32, selectedColor));
-			((TextView) tabObjects.get(callid).findViewWithTag("text")).setTextColor(selectedColor);
+			TextView textView = (TextView) tabObjects.get(callid).findViewWithTag("text");
+			if (textView != null) {
+				textView.setTextColor(selectedColor);	
+			}
 			selectedId = callid;
 		} else {
 			selectedId = null;
