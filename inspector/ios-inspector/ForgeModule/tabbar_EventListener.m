@@ -26,14 +26,11 @@ char taskKey;
 	[tabbar setItems:tabbarItems];
 	
 	// Resize webview scroll area
-	if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
-		[[ForgeApp sharedApp] webView].frame = CGRectMake([[ForgeApp sharedApp] webView].frame.origin.x, [[ForgeApp sharedApp] webView].frame.origin.y, [[ForgeApp sharedApp] webView].frame.size.width, [[ForgeApp sharedApp] webView].frame.size.height - tabbar.frame.size.height);
-	} else {
-		UIEdgeInsets inset = [[ForgeApp sharedApp] webView].scrollView.contentInset;
-		UIEdgeInsets newInset = UIEdgeInsetsMake(inset.top, inset.left, inset.bottom + tabbar.frame.size.height, inset.right);
-		[[[ForgeApp sharedApp] webView].scrollView setContentInset:newInset];
-		[[[ForgeApp sharedApp] webView].scrollView setScrollIndicatorInsets:newInset];
-	}
+	CGRect frame = [[ForgeApp sharedApp] webView].frame;
+	[[ForgeApp sharedApp] webView].frame = CGRectMake(frame.origin.x,
+													  frame.origin.y,
+													  frame.size.width,
+													  frame.size.height - tabbar.frame.size.height);
 	
 	// Add tabbar to view
 	[[[ForgeApp sharedApp] viewController].view insertSubview:tabbar aboveSubview:[ForgeApp sharedApp].webView];
