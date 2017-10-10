@@ -1,8 +1,8 @@
 {
-	"changes": "* Support arm64 devices running iOS 8",
-	"description": "Add a navigation button bar to the bottom of your app.\n\nThe tabbar module displays a fixed row of native buttons at the bottom of your app. You can add and remove buttons, and configure their behaviour and appearance, all from JavaScript.",
-	"min_platform_version": "v2.5.5",
-	"namespace": "tabbar",
-	"platform_version": "v2.5.5",
-	"version": "2.5"
+    "changes": "* iPhone-X support",
+    "description": "Add a navigation button bar to the bottom of your app.\n\nThe tabbar module displays a fixed row of native buttons at the bottom of your app. You can add and remove buttons, and configure their behaviour and appearance, all from JavaScript.",
+    "min_platform_version": "v2.6.2",
+    "namespace": "tabbar",
+    "platform_version": "v2.6.2",
+    "version": "2.6"
 }

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface tabbar_Delegate : NSObject <UITabBarDelegate> {
-	tabbar_Delegate *me;
+    tabbar_Delegate *me;
 }
 
 - (tabbar_Delegate*) init;

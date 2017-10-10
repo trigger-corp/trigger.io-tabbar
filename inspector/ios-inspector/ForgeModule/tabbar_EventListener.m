@@ -9,37 +9,29 @@
 #import "tabbar_EventListener.h"
 #import "tabbar_Delegate.h"
 
-UITabBar *tabbar;
 NSMutableArray* tabbarItems;
 char taskKey;
 
 @implementation tabbar_EventListener
 
 + (void)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Create the tabbar
-	tabbar = [[UITabBar alloc] initWithFrame:CGRectMake(0.0f, ([[ForgeApp sharedApp] webView].frame.origin.y + [[ForgeApp sharedApp] webView].frame.size.height) - 49.0f, 320.0f, 49.0f)];
-	tabbar.autoresizingMask = UIViewAutoresizingNone | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
-	tabbar_Delegate *delegate = [[tabbar_Delegate alloc] init];
-	tabbar.delegate = delegate;
-	
-	tabbarItems = [[NSMutableArray alloc] init];
-	[tabbar setItems:tabbarItems];
-	
-	// Resize webview scroll area
-	CGRect frame = [[ForgeApp sharedApp] webView].frame;
-	[[ForgeApp sharedApp] webView].frame = CGRectMake(frame.origin.x,
-													  frame.origin.y,
-													  frame.size.width,
-													  frame.size.height - tabbar.frame.size.height);
-	
-	// Add tabbar to view
-	[[[ForgeApp sharedApp] viewController].view insertSubview:tabbar aboveSubview:[ForgeApp sharedApp].webView];
+    // Show tab bar by default
+    UITabBar *tabBar = ForgeApp.sharedApp.viewController.tabBar;
+    ForgeApp.sharedApp.viewController.tabBarHidden = NO;
+
+    // Register delegate
+    tabbar_Delegate *delegate = [[tabbar_Delegate alloc] init];
+    tabBar.delegate = delegate;
+
+    tabbarItems = [[NSMutableArray alloc] init];
+    [tabBar setItems:tabbarItems];
 }
 
 + (void) preFirstWebViewLoad {
-	// Reset tabbar on first load/reload
-	[tabbarItems removeAllObjects];
-	[tabbar setItems:tabbarItems];
+    // Reset tabbar on first load/reload
+    UITabBar *tabBar = ForgeApp.sharedApp.viewController.tabBar;
+    [tabbarItems removeAllObjects];
+    [tabBar setItems:tabbarItems];
 }
 
 @end

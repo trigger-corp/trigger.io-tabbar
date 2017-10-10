@@ -14,17 +14,18 @@ extern char taskKey;
 @implementation tabbar_Delegate
 
 - (tabbar_Delegate*)init {
-	if (self = [super init]) {
-		// "retain"
-		me = self;
-	}	
-	return self;
+    if (self = [super init]) {
+        // "retain"
+        me = self;
+    }
+    return self;
 }
 
+
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
-	ForgeTask *task = (ForgeTask *)objc_getAssociatedObject(item, &taskKey);
-	NSString *eventName = [NSString stringWithFormat:@"tabbar.buttonPressed.%@", task.callid];
-	[[ForgeApp sharedApp] event:eventName withParam:[NSNull null]];
+    ForgeTask *task = (ForgeTask *)objc_getAssociatedObject(item, &taskKey);
+    NSString *eventName = [NSString stringWithFormat:@"tabbar.buttonPressed.%@", task.callid];
+    [[ForgeApp sharedApp] event:eventName withParam:[NSNull null]];
 }
 
 @end
