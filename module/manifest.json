@@ -1,8 +1,8 @@
 {
-    "changes": "* iPhone-X support",
+    "changes": "* Only use this version with the v2.7 betas\n* Android 'P' support",
     "description": "Add a navigation button bar to the bottom of your app.\n\nThe tabbar module displays a fixed row of native buttons at the bottom of your app. You can add and remove buttons, and configure their behaviour and appearance, all from JavaScript.",
-    "min_platform_version": "v2.6.2",
+    "min_platform_version": "v2.7.1beta-1",
     "namespace": "tabbar",
-    "platform_version": "v2.6.2",
-    "version": "2.6"
+    "platform_version": "v2.7.1beta-1",
+    "version": "2.7"
 }
