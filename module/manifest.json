@@ -1,8 +1,8 @@
 {
-    "changes": "* Android 'P' support",
+    "changes": "* Update to new Forge v2.9.x ForgeFile API's.\n* Update for Android 11\n* Update for iOS 14",
     "description": "Add a navigation button bar to the bottom of your app.\n\nThe tabbar module displays a fixed row of native buttons at the bottom of your app. You can add and remove buttons, and configure their behaviour and appearance, all from JavaScript.",
-    "min_platform_version": "v2.7.1",
+    "min_platform_version": "v2.9.0",
     "namespace": "tabbar",
-    "platform_version": "v2.7.1",
-    "version": "2.7"
+    "platform_version": "v2.9.0",
+    "version": "2.8"
 }
