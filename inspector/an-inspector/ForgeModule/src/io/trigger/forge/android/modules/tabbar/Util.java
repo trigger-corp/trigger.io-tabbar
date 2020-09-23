@@ -2,14 +2,17 @@ package io.trigger.forge.android.modules.tabbar;
 
 import io.trigger.forge.android.core.ForgeApp;
 import io.trigger.forge.android.core.ForgeFile;
+import io.trigger.forge.android.core.ForgeStorage;
 import io.trigger.forge.android.core.ForgeViewController;
 import io.trigger.forge.android.util.BitmapUtil;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -59,7 +62,10 @@ public class Util {
         JsonElement icon = params.get("icon");
 
         try {
-            image.setImageDrawable(BitmapUtil.scaledDrawableFromStreamWithTint(ForgeApp.getActivity(), new ForgeFile(ForgeApp.getActivity(), icon).fd().createInputStream(), 0, 32, 0xFF929292));
+            ForgeFile forgeFile = new ForgeFile(ForgeStorage.EndpointId.Source, icon.getAsString());
+            AssetFileDescriptor fileDescriptor = ForgeStorage.getFileDescriptor(forgeFile);
+            InputStream inputStream = fileDescriptor.createInputStream();
+            image.setImageDrawable(BitmapUtil.scaledDrawableFromStreamWithTint(ForgeApp.getActivity(), inputStream, 0, 32, 0xFF929292));
         } catch (NullPointerException e) {
             throw new IOException("Missing image file for tabbar button.");
         }
