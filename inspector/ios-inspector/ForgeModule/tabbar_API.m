@@ -15,8 +15,6 @@ char indexKey;
 
 @implementation tabbar_API
 
-static bool hidden = NO;
-
 + (void)show:(ForgeTask*)task {
     ForgeApp.sharedApp.viewController.tabBarHidden = NO;
     [task success:nil];
@@ -37,9 +35,10 @@ static bool hidden = NO;
         return;
     }
 
-    ForgeFile *file = [[ForgeFile alloc] initWithObject:[task.params objectForKey:@"icon"]];
-
-    [file data:^(NSData *data) {
+    NSString *resource = task.params[@"icon"];
+    ForgeFile *forgeFile = [ForgeFile withEndpointId:ForgeStorage.EndpointIds.Source resource:resource];
+    
+    [forgeFile contents:^(NSData *data) {
         UIImage *icon = [[UIImage alloc] initWithData:data];
 
         if (!icon) {
